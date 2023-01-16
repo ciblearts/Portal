@@ -1,0 +1,23 @@
+[gd_scene load_steps=2 format=2]
+
+[sub_resource type="GDScript" id=1]
+resource_name = "HDSprite"
+script/source = "tool
+extends Sprite
+
+
+export var texture_scale : float = 1.0 \\
+		setget set_texture_scale, get_texture_scale
+
+func set_texture_scale(new_texture_scale : float) -> void:
+	texture_scale = new_texture_scale
+	scale = Vector2.ONE / texture_scale
+
+func get_texture_scale() -> float:
+	return texture_scale
+"
+
+[node name="HDSprite" type="Sprite"]
+scale = Vector2( 0.5, 0.5 )
+script = SubResource( 1 )
+texture_scale = 2.0
