@@ -1,0 +1,40 @@
+[gd_scene load_steps=4 format=2]
+
+[ext_resource path="res://fonts/portal.tres" type="DynamicFont" id=1]
+
+[sub_resource type="StyleBoxFlat" id=1]
+content_margin_left = 0.0
+content_margin_right = 0.0
+content_margin_top = 0.0
+content_margin_bottom = 0.0
+bg_color = Color( 0.6, 0.6, 0.6, 0 )
+border_color = Color( 0.8, 0.8, 0.8, 0 )
+corner_detail = 1
+shadow_color = Color( 0, 0, 0, 0 )
+
+[sub_resource type="StyleBoxFlat" id=2]
+content_margin_left = 0.0
+content_margin_right = 0.0
+content_margin_top = 0.0
+content_margin_bottom = 0.0
+bg_color = Color( 0, 0, 0, 0 )
+border_color = Color( 0, 0, 0, 0 )
+shadow_color = Color( 1, 1, 1, 0 )
+
+[node name="Text" type="TextEdit"]
+margin_right = 50.0
+margin_bottom = 50.0
+grow_horizontal = 2
+grow_vertical = 2
+input_pass_on_modal_close_click = false
+custom_colors/font_color_readonly = Color( 1, 1, 1, 1 )
+custom_fonts/font = ExtResource( 1 )
+custom_styles/read_only = SubResource( 1 )
+custom_styles/normal = SubResource( 2 )
+readonly = true
+context_menu_enabled = false
+shortcut_keys_enabled = false
+virtual_keyboard_enabled = false
+selecting_enabled = false
+wrap_enabled = true
+caret_moving_by_right_click = false

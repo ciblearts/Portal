@@ -36,13 +36,13 @@ func roll() -> int:
 	return get_rolled_number()
 
 func update_symbol() -> void:
-	get_parent().get_parent().dice = rolled_number
-	if flag: 
-		get_parent().get_parent().move_player_one()
+	if flag:
+		get_parent().get_parent().move_player(flag, rolled_number)
 		flag = false
 	else: 
-		get_parent().get_parent().move_player_two()
+		get_parent().get_parent().move_player(flag, rolled_number)
 		flag = true
+		
 	symbol.set_symbol(rolled_number)
 
 func _unhandled_input(event) -> void:

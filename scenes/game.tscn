@@ -1,13 +1,45 @@
-[gd_scene load_steps=6 format=2]
+[gd_scene load_steps=13 format=2]
 
 [ext_resource path="res://assets/board.png" type="Texture" id=1]
 [ext_resource path="res://assets/Player2.png" type="Texture" id=2]
 [ext_resource path="res://assets/Player1.png" type="Texture" id=3]
-[ext_resource path="res://game.gd" type="Script" id=4]
+[ext_resource path="res://scenes/game.gd" type="Script" id=4]
 [ext_resource path="res://scenes/bouncing_dice.tscn" type="PackedScene" id=5]
+[ext_resource path="res://shaders/wiggle.tres" type="Material" id=6]
+[ext_resource path="res://assets/bg.PNG" type="Texture" id=7]
+[ext_resource path="res://assets/blue_big.PNG" type="Texture" id=8]
+[ext_resource path="res://assets/yellow_big.PNG" type="Texture" id=9]
+[ext_resource path="res://assets/shadow.PNG" type="Texture" id=10]
+[ext_resource path="res://assets/blue_arow.PNG" type="Texture" id=11]
+[ext_resource path="res://assets/yellow_arrow.PNG" type="Texture" id=12]
 
 [node name="game" type="Node2D"]
 script = ExtResource( 4 )
+
+[node name="Bg" type="Sprite" parent="."]
+position = Vector2( 938, 492 )
+scale = Vector2( 2, 1.25 )
+texture = ExtResource( 7 )
+
+[node name="Shadow" type="Sprite" parent="."]
+self_modulate = Color( 1, 1, 1, 0.686275 )
+material = ExtResource( 6 )
+position = Vector2( 1404, 940 )
+texture = ExtResource( 10 )
+
+[node name="BlueBig" type="Sprite" parent="."]
+self_modulate = Color( 1, 1, 1, 0.686275 )
+material = ExtResource( 6 )
+position = Vector2( 1596, 559 )
+z_index = 1
+texture = ExtResource( 8 )
+
+[node name="YellowBig" type="Sprite" parent="."]
+self_modulate = Color( 1, 1, 1, 0.686275 )
+material = ExtResource( 6 )
+position = Vector2( 1258, 514 )
+z_index = 1
+texture = ExtResource( 9 )
 
 [node name="Board" type="Sprite" parent="."]
 position = Vector2( 511, 504 )
@@ -317,22 +349,40 @@ position = Vector2( 155, 55 )
 [node name="100" type="Position2D" parent="Positions"]
 position = Vector2( 55, 55 )
 
+[node name="bouncing_dice" parent="." instance=ExtResource( 5 )]
+position = Vector2( 371, 447 )
+
 [node name="YSort" type="YSort" parent="."]
 
 [node name="Player2" type="Sprite" parent="YSort"]
+material = ExtResource( 6 )
 position = Vector2( -184, 737 )
+z_index = 1
 texture = ExtResource( 2 )
 offset = Vector2( 0, -70 )
 
+[node name="Arrow" type="Sprite" parent="YSort/Player2"]
+visible = false
+position = Vector2( 9, -211 )
+scale = Vector2( 0.2, 0.2 )
+texture = ExtResource( 12 )
+
 [node name="Player1" type="Sprite" parent="YSort"]
+material = ExtResource( 6 )
 position = Vector2( -205, 1005 )
+z_index = 1
 texture = ExtResource( 3 )
 offset = Vector2( 0, -50 )
 
-[node name="bouncing_dice" parent="." instance=ExtResource( 5 )]
-position = Vector2( 371, 447 )
+[node name="Arrow" type="Sprite" parent="YSort/Player1"]
+visible = false
+position = Vector2( -6, -184 )
+scale = Vector2( 0.2, 0.2 )
+texture = ExtResource( 11 )
 
 [node name="StaticBody2D" type="StaticBody2D" parent="."]
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="StaticBody2D"]
 polygon = PoolVector2Array( 1003, 4, 2, 1, -29, -25, 1044, -26, 1037, 1033, -19, 1038, -29, -25, 5, 3, 4, 1004, 1003, 1002 )
+
+[node name="Numbers" type="Node2D" parent="."]
