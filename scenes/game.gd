@@ -4,8 +4,6 @@ onready var positions = $Positions
 var turn = 1
 var pos1 = 0
 var pos2 = 0
-#var ps1_state = true
-#var ps2_state = true
 var portals = []
 
 var rng = RandomNumberGenerator.new()
@@ -46,12 +44,6 @@ func place_numbers(portals):
 		instance.text = str(i + 1)
 		$Numbers.add_child(instance)
 
-#func change_state(flag):
-#	if flag:
-#		ps1_state = false
-#	else:
-#		ps2_state = false
-
 func move_player(flag, dice):
 	$bouncing_dice.active = false
 	var player = $YSort/Player1 if flag else $YSort/Player2
@@ -64,7 +56,8 @@ func move_player(flag, dice):
 				player.transform = positions.get_node(str(i)).transform
 				yield(get_tree().create_timer(0.5), "timeout")
 				if i == 100:
-					print("Player ", flag, " won")
+					$Victory.play(String(flag))
+					$Victory.show()
 					dice = 2*pos - i - 2
 					pos = i
 			pos = pos + dice
@@ -80,18 +73,19 @@ func move_player(flag, dice):
 			pos = 1
 			player.transform = positions.get_node(str(1)).transform
 			yield(get_tree().create_timer(0.5), "timeout")
-	update_pos(flag, pos)
+	update_pos(flag, pos, dice)
 
-func update_pos(flag, pos):
+func update_pos(flag, pos, dice):
 	if flag: 
 		pos1 = pos
-		$YSort/Player2/Arrow.show()
-		$YSort/Player1/Arrow.hide()
-	else: 
+		if dice != 1:
+			$YSort/Player2/Arrow.show()
+			$YSort/Player1/Arrow.hide()
+	else:
 		pos2 = pos
-		$YSort/Player1/Arrow.show()
-		$YSort/Player2/Arrow.hide()
-		
-	
+		if dice != 1:
+			$YSort/Player1/Arrow.show()
+			$YSort/Player2/Arrow.hide()
 	if pos == 100:
-		print("Player " + flag + " won!!!")
+		$Victory.play(String(flag))
+		$Victory.show()

@@ -38,10 +38,14 @@ func roll() -> int:
 func update_symbol() -> void:
 	if flag:
 		get_parent().get_parent().move_player(flag, rolled_number)
-		flag = false
+		if rolled_number!= 1:
+#			get_parent().get_parent().change_player() 
+			flag = false
 	else: 
 		get_parent().get_parent().move_player(flag, rolled_number)
-		flag = true
+		if rolled_number!= 1: 
+#			get_parent().get_parent().change_player()
+			flag = true
 		
 	symbol.set_symbol(rolled_number)
 
@@ -179,7 +183,6 @@ tracks/5/keys = {
 }
 
 [node name="Dice" type="Node2D"]
-position = Vector2( 22, 22 )
 script = SubResource( 2 )
 __meta__ = {
 "_edit_group_": true
@@ -193,18 +196,22 @@ rotation = 3.14159
 [node name="Background" type="Node2D" parent="Visual"]
 
 [node name="HDSprite" parent="Visual/Background" instance=ExtResource( 2 )]
+scale = Vector2( 1, 1 )
 texture = ExtResource( 1 )
 script = SubResource( 1 )
+texture_scale = 1.0
 
 [node name="Symbol" type="Node2D" parent="Visual"]
 script = SubResource( 4 )
 
 [node name="HDSprite" parent="Visual/Symbol" instance=ExtResource( 2 )]
 modulate = Color( 0, 0, 0, 1 )
+scale = Vector2( 1, 1 )
 texture = ExtResource( 3 )
 hframes = 10
 frame = 3
 script = SubResource( 5 )
+texture_scale = 1.0
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="Visual"]
 anims/Roll = SubResource( 3 )

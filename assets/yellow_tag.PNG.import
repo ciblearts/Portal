@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/background.svg-ef40ca42a4262420673651b4c6a8a059.stex"
+path="res://.import/yellow_tag.PNG-5c029e6ad62554e3258d71997239706b.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/background.svg"
-dest_files=[ "res://.import/background.svg-ef40ca42a4262420673651b4c6a8a059.stex" ]
+source_file="res://assets/yellow_tag.PNG"
+dest_files=[ "res://.import/yellow_tag.PNG-5c029e6ad62554e3258d71997239706b.stex" ]
 
 [params]
 
@@ -32,4 +32,4 @@ process/normal_map_invert_y=false
 stream=false
 size_limit=0
 detect_3d=true
-svg/scale=5.0
+svg/scale=1.0

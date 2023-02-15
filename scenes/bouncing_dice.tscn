@@ -7,6 +7,7 @@
 bounce = 0.5
 
 [sub_resource type="RectangleShape2D" id=1]
+extents = Vector2( 25, 25 )
 
 [node name="bouncing_dice" type="RigidBody2D"]
 mass = 10.0
@@ -17,10 +18,8 @@ contact_monitor = true
 script = ExtResource( 2 )
 
 [node name="Dice" parent="." instance=ExtResource( 1 )]
-scale = Vector2( 5, 5 )
+scale = Vector2( 0.5, 0.5 )
 z_index = 1
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2( 22, 22 )
-scale = Vector2( 2, 2 )
 shape = SubResource( 1 )
