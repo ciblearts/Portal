@@ -10,6 +10,7 @@ var rng = RandomNumberGenerator.new()
 var blue = preload("res://scenes/blue.tscn")
 var yellow = preload("res://scenes/yellow.tscn")
 var text = preload("res://scenes/text.tscn")
+var confetti = preload("res://scenes/confetti.tscn")
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -56,6 +57,7 @@ func move_player(flag, dice):
 				player.transform = positions.get_node(str(i)).transform
 				yield(get_tree().create_timer(0.5), "timeout")
 				if i == 100:
+					add_confetti()
 					$Victory.play(String(flag))
 					$Victory.show()
 					dice = 2*pos - i - 2
@@ -87,5 +89,12 @@ func update_pos(flag, pos, dice):
 			$YSort/Player1/Arrow.show()
 			$YSort/Player2/Arrow.hide()
 	if pos == 100:
+		print("victory")
+		add_confetti()
 		$Victory.play(String(flag))
 		$Victory.show()
+
+func add_confetti():
+	var instance = confetti.instance()
+	instance.position = $bouncing_dice.position
+	add_child(instance)

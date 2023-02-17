@@ -378,7 +378,8 @@ offset = Vector2( 0, -70 )
 
 [node name="Arrow" type="Sprite" parent="YSort/Player2"]
 visible = false
-position = Vector2( 9, -211 )
+position = Vector2( 80, 54 )
+rotation = 2.0944
 scale = Vector2( 0.2, 0.2 )
 texture = ExtResource( 12 )
 
@@ -391,7 +392,8 @@ offset = Vector2( 0, -50 )
 
 [node name="Arrow" type="Sprite" parent="YSort/Player1"]
 visible = false
-position = Vector2( -6, -184 )
+position = Vector2( 86, 53 )
+rotation = 2.0944
 scale = Vector2( 0.2, 0.2 )
 texture = ExtResource( 11 )
 
@@ -405,5 +407,6 @@ polygon = PoolVector2Array( 1003, 4, 2, 1, -29, -25, 1044, -26, 1037, 1033, -19,
 [node name="Victory" type="AnimatedSprite" parent="."]
 visible = false
 position = Vector2( 500, 500 )
+z_index = 3
 frames = SubResource( 1 )
 animation = "False"
