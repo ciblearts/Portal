@@ -13,6 +13,8 @@ func _ready():
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
+	if Input.is_action_just_pressed("ui_home"):
+		get_tree().reload_current_scene()
 	if Input.is_action_just_pressed("dice_roll"):
 		first_touch = get_global_mouse_position()
 	if Input.is_action_just_released("dice_roll"):
